@@ -1,0 +1,96 @@
+.app-root {
+    -fx-background-color: #f4f6fb;
+    -fx-font-family: "Inter", "Segoe UI", "Arial";
+}
+
+.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #dde3ef transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.app-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+.content-area {
+    -fx-background-color: #f4f6fb;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.editor-area {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #d7deea;
+    -fx-border-width: 1;
+    -fx-font-size: 15px;
+    -fx-text-fill: #111827;
+    -fx-prompt-text-fill: #9ca3af;
+}
+
+.editor-area .content {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+}
+
+.side-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: #d7deea;
+    -fx-border-width: 1;
+    -fx-padding: 18;
+}
+
+.suggestions-list {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1;
+}
+
+.primary-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 9 16 9 16;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.secondary-button {
+    -fx-background-color: white;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #d1d5db;
+    -fx-padding: 8 15 8 15;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #f3f4f6;
+}
+
+.bottom-bar {
+    -fx-background-color: white;
+    -fx-border-color: #dde3ef transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-label {
+    -fx-text-fill: #6b7280;
+}

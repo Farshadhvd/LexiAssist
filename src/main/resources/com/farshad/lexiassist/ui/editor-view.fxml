@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.farshad.lexiassist.ui.EditorController"
+            prefWidth="1100"
+            prefHeight="700"
+            styleClass="app-root">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="top-bar">
+            <padding>
+                <Insets top="14" right="18" bottom="14" left="18"/>
+            </padding>
+
+            <Label text="LexiAssist" styleClass="app-title"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="loadTextButton" text="Load Text" styleClass="primary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="18" styleClass="content-area">
+            <padding>
+                <Insets top="18" right="18" bottom="18" left="18"/>
+            </padding>
+
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Editor" styleClass="section-title"/>
+
+                <TextArea fx:id="editorTextArea"
+                          promptText="Start typing here..."
+                          wrapText="true"
+                          VBox.vgrow="ALWAYS"
+                          styleClass="editor-area"/>
+            </VBox>
+
+            <VBox spacing="14" prefWidth="290" minWidth="260" maxWidth="340" styleClass="side-panel">
+                <Label text="Writing Tools" styleClass="section-title"/>
+
+                <CheckBox fx:id="spellingSuggestionsCheckBox"
+                          text="Spelling Suggestions"
+                          selected="true"/>
+
+                <CheckBox fx:id="autoCompleteCheckBox"
+                          text="AutoComplete"
+                          selected="true"/>
+
+                <Separator/>
+
+                <Label text="Suggestions" styleClass="section-title"/>
+
+                <ListView fx:id="suggestionsListView"
+                          VBox.vgrow="ALWAYS"
+                          styleClass="suggestions-list"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="bottom-bar">
+            <padding>
+                <Insets top="12" right="18" bottom="12" left="18"/>
+            </padding>
+
+            <Button fx:id="clearButton" text="Clear" styleClass="secondary-button"/>
+
+            <Label fx:id="statusLabel" text="Ready" styleClass="status-label"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
