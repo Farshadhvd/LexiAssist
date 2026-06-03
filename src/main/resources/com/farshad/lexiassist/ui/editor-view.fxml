@@ -18,30 +18,44 @@
             fx:controller="com.farshad.lexiassist.ui.EditorController"
             prefWidth="1100"
             prefHeight="700"
+            minWidth="850"
+            minHeight="550"
             styleClass="app-root">
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="12" styleClass="top-bar">
             <padding>
-                <Insets top="14" right="18" bottom="14" left="18"/>
+                <Insets top="16" right="22" bottom="16" left="22"/>
             </padding>
 
-            <Label text="LexiAssist" styleClass="app-title"/>
+            <VBox spacing="2">
+                <Label text="LexiAssist" styleClass="app-title"/>
+                <Label text="Autocomplete and spelling support while you write"
+                       styleClass="app-subtitle"/>
+            </VBox>
 
             <Region HBox.hgrow="ALWAYS"/>
 
-            <Button fx:id="loadTextButton" text="Load Text" styleClass="primary-button"/>
+            <Button fx:id="loadTextButton"
+                    text="Load Text"
+                    minWidth="100"
+                    styleClass="primary-button"/>
         </HBox>
     </top>
 
     <center>
         <HBox spacing="18" styleClass="content-area">
             <padding>
-                <Insets top="18" right="18" bottom="18" left="18"/>
+                <Insets top="20" right="22" bottom="20" left="22"/>
             </padding>
 
             <VBox spacing="10" HBox.hgrow="ALWAYS">
-                <Label text="Editor" styleClass="section-title"/>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Editor" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Suggestion popup will appear near the caret"
+                           styleClass="hint-label"/>
+                </HBox>
 
                 <TextArea fx:id="editorTextArea"
                           promptText="Start typing here..."
@@ -50,20 +64,37 @@
                           styleClass="editor-area"/>
             </VBox>
 
-            <VBox spacing="14" prefWidth="290" minWidth="260" maxWidth="340" styleClass="side-panel">
-                <Label text="Writing Tools" styleClass="section-title"/>
+            <VBox spacing="16"
+                  prefWidth="300"
+                  minWidth="270"
+                  maxWidth="340"
+                  styleClass="side-panel">
 
-                <CheckBox fx:id="spellingSuggestionsCheckBox"
-                          text="Spelling Suggestions"
-                          selected="true"/>
+                <VBox spacing="4">
+                    <Label text="Writing Tools" styleClass="section-title"/>
+                    <Label text="Choose what kind of help you want while typing."
+                           wrapText="true"
+                           styleClass="hint-label"/>
+                </VBox>
 
-                <CheckBox fx:id="autoCompleteCheckBox"
-                          text="AutoComplete"
-                          selected="true"/>
+                <VBox spacing="10" styleClass="tool-options">
+                    <CheckBox fx:id="spellingSuggestionsCheckBox"
+                              text="Spelling Suggestions"
+                              selected="true"/>
+
+                    <CheckBox fx:id="autoCompleteCheckBox"
+                              text="AutoComplete"
+                              selected="true"/>
+                </VBox>
 
                 <Separator/>
 
-                <Label text="Suggestions" styleClass="section-title"/>
+                <VBox spacing="4">
+                    <Label text="Suggestions" styleClass="section-title"/>
+                    <Label text="Keyboard-selectable suggestions will also appear near the cursor."
+                           wrapText="true"
+                           styleClass="hint-label"/>
+                </VBox>
 
                 <ListView fx:id="suggestionsListView"
                           VBox.vgrow="ALWAYS"
@@ -75,10 +106,15 @@
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="12" styleClass="bottom-bar">
             <padding>
-                <Insets top="12" right="18" bottom="12" left="18"/>
+                <Insets top="12" right="22" bottom="12" left="22"/>
             </padding>
 
-            <Button fx:id="clearButton" text="Clear" styleClass="secondary-button"/>
+            <Button fx:id="clearButton"
+                    text="Clear"
+                    minWidth="80"
+                    styleClass="secondary-button"/>
+
+            <Separator orientation="VERTICAL"/>
 
             <Label fx:id="statusLabel" text="Ready" styleClass="status-label"/>
         </HBox>

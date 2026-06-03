@@ -35,7 +35,7 @@ public class EditorController {
         statusLabel.setText("Ready");
 
         suggestionsListView.getItems().setAll(
-                "Suggestions will appear here"
+                "Start typing to see suggestions"
         );
     }
 }
