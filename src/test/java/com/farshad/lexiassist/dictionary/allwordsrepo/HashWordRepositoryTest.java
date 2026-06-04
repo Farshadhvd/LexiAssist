@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary;
+package com.farshad.lexiassist.dictionary.allwordsrepo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

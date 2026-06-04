@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary;
+package com.farshad.lexiassist.dictionary.allwordsrepo;
 
 public interface WordRepository {
 
