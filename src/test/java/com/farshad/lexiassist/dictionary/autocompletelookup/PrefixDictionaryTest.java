@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary.autocompletemodules;
+package com.farshad.lexiassist.dictionary.autocompletelookup;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

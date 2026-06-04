@@ -1,6 +1,6 @@
 package com.farshad.lexiassist.autocomplete;
 
-import com.farshad.lexiassist.dictionary.autocompletemodules.PrefixDictionary;
+import com.farshad.lexiassist.dictionary.autocompletelookup.PrefixDictionary;
 
 import java.util.Collections;
 import java.util.List;

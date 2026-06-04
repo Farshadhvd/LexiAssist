@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary.allwordsrepo;
+package com.farshad.lexiassist.dictionary.exactwordlookup;
 
 import java.util.HashSet;
 import java.util.Locale;

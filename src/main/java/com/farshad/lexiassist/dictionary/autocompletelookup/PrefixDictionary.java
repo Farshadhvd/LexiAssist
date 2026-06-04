@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary.autocompletemodules;
+package com.farshad.lexiassist.dictionary.autocompletelookup;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
