@@ -4,5 +4,6 @@ module com.farshad.lexiassist {
 
     exports com.farshad.lexiassist;
     exports com.farshad.lexiassist.io;
+    exports com.farshad.lexiassist.dictionary;
     opens com.farshad.lexiassist.ui to javafx.fxml;
 }
