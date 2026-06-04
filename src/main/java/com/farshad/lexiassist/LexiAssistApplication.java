@@ -14,12 +14,12 @@ public class LexiAssistApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                LexiAssistApplication.class.getResource("/com/farshad/lexiassist/ui/editor-view.fxml")
+                LexiAssistApplication.class.getResource("/ui/editor-view.fxml")
         );
 
         Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         scene.getStylesheets().add(
-                LexiAssistApplication.class.getResource("/com/farshad/lexiassist/ui/styles.css").toExternalForm()
+                LexiAssistApplication.class.getResource("/ui/styles.css").toExternalForm()
         );
 
         stage.setTitle("LexiAssist");
