@@ -1,4 +1,4 @@
-package com.farshad.lexiassist.dictionary.autocomplete;
+package com.farshad.lexiassist.dictionary.autocompletemodules;
 
 import java.util.HashMap;
 import java.util.Map;

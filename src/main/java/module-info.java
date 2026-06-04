@@ -5,6 +5,7 @@ module com.farshad.lexiassist {
     exports com.farshad.lexiassist;
     exports com.farshad.lexiassist.io;
     exports com.farshad.lexiassist.dictionary;
-    exports com.farshad.lexiassist.dictionary.autocomplete;
+    exports com.farshad.lexiassist.dictionary.autocompletemodules;
+    exports com.farshad.lexiassist.autocomplete;
     opens com.farshad.lexiassist.ui to javafx.fxml;
 }
