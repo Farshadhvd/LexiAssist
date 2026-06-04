@@ -1,5 +1,7 @@
-package com.farshad.lexiassist.dictionary.exactwordlookup;
+package com.farshad.lexiassist.dictionary;
 
+import com.farshad.lexiassist.dictionary.autocompletelookup.PrefixDictionary;
+import com.farshad.lexiassist.dictionary.exactwordlookup.HashWordRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,13 +11,13 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordRepositoryLoaderTest {
+class DictionaryDataLoaderTest {
 
-    private WordRepositoryLoader loader;
+    private DictionaryDataLoader loader;
 
     @BeforeEach
     void setUp() {
-        loader = new WordRepositoryLoader();
+        loader = new DictionaryDataLoader();
     }
 
     @Test
@@ -142,5 +144,39 @@ class WordRepositoryLoaderTest {
         );
 
         assertTrue(exception.getMessage().contains("Word repository cannot be null"));
+    }
+
+    @Test
+    void shouldLoadWordsIntoHashAndPrefixDictionaries() throws IOException {
+        String content = """
+            hello
+            help
+            world
+            """;
+
+        HashWordRepository wordRepository = new HashWordRepository();
+        PrefixDictionary prefixDictionary = new PrefixDictionary();
+
+        loader.loadWords(
+                new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8)),
+                wordRepository,
+                prefixDictionary
+        );
+
+        assertEquals(3, wordRepository.size());
+        assertEquals(3, prefixDictionary.size());
+
+        assertTrue(wordRepository.contains("hello"));
+        assertTrue(prefixDictionary.contains("hello"));
+        assertTrue(prefixDictionary.suggestCompletions("he", 5).contains("help"));
+    }
+
+    @Test
+    void shouldLoadDictionaryBundleFromResource() {
+        DictionaryBundle dictionaryBundle = loader.loadBundleFromResource("/words-small.txt");
+
+        assertTrue(dictionaryBundle.wordRepository().contains("hello"));
+        assertTrue(dictionaryBundle.prefixDictionary().contains("hello"));
+        assertFalse(dictionaryBundle.prefixDictionary().suggestCompletions("pro", 5).isEmpty());
     }
 }
