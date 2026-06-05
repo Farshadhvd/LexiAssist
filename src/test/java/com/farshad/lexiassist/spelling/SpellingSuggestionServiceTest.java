@@ -28,6 +28,7 @@ class SpellingSuggestionServiceTest {
         wordRepository.add("recite");
         wordRepository.add("program");
         wordRepository.add("progress");
+        wordRepository.add("receive");
 
         spellingSuggestionService = new SpellingSuggestionService(wordRepository);
     }
@@ -52,6 +53,13 @@ class SpellingSuggestionServiceTest {
         List<String> candidates = spellingSuggestionService.generateOneEditCandidates("wurld", true);
 
         assertTrue(candidates.contains("world"));
+    }
+
+    @Test
+    void shouldGenerateAdjacentSwapCandidates() {
+        List<String> candidates = spellingSuggestionService.generateOneEditCandidates("recieve", true);
+
+        assertTrue(candidates.contains("receive"));
     }
 
     @Test
@@ -90,6 +98,13 @@ class SpellingSuggestionServiceTest {
         List<String> suggestions = spellingSuggestionService.suggest("hello", 5);
 
         assertTrue(suggestions.isEmpty());
+    }
+
+    @Test
+    void shouldSuggestCorrectionForAdjacentSwapTypo() {
+        List<String> suggestions = spellingSuggestionService.suggest("recieve", 5);
+
+        assertTrue(suggestions.contains("receive"));
     }
 
     @Test

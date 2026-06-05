@@ -78,6 +78,7 @@ public class SpellingSuggestionService {
         addDeletionCandidates(normalizedWord, candidates, onlyValidWords);
         addInsertionCandidates(normalizedWord, candidates, onlyValidWords);
         addSubstitutionCandidates(normalizedWord, candidates, onlyValidWords);
+        addAdjacentSwapCandidates(normalizedWord, candidates, onlyValidWords);
 
         return candidates;
     }
@@ -112,6 +113,20 @@ public class SpellingSuggestionService {
             }
         }
     }
+    void addAdjacentSwapCandidates(String word, List<String> candidates, boolean onlyValidWords) {
+        for (int index = 0; index < word.length() - 1; index++) {
+            StringBuilder builder = new StringBuilder(word);
+
+            char currentLetter = builder.charAt(index);
+            char nextLetter = builder.charAt(index + 1);
+
+            builder.setCharAt(index, nextLetter);
+            builder.setCharAt(index + 1, currentLetter);
+
+            addCandidate(word, builder.toString(), candidates, onlyValidWords);
+        }
+    }
+
 
     private void addCandidate(
             String originalWord,
