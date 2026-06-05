@@ -135,3 +135,22 @@
     -fx-text-fill: #6b7280;
     -fx-font-size: 12px;
 }
+
+.popup-suggestions-list {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+.popup-suggestions-list .list-cell {
+    -fx-padding: 7 10 7 10;
+    -fx-font-size: 13px;
+}
+
+.popup-suggestions-list .list-cell:filled:selected {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e3a8a;
+}
