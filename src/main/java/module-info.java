@@ -8,5 +8,6 @@ module com.farshad.lexiassist {
     exports com.farshad.lexiassist.dictionary.autocompletelookup;
     exports com.farshad.lexiassist.dictionary.exactwordlookup;
     exports com.farshad.lexiassist.autocomplete;
+    exports com.farshad.lexiassist.spelling;
     opens com.farshad.lexiassist.ui to javafx.fxml;
 }
