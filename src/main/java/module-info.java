@@ -9,5 +9,7 @@ module com.farshad.lexiassist {
     exports com.farshad.lexiassist.dictionary.exactwordlookup;
     exports com.farshad.lexiassist.autocomplete;
     exports com.farshad.lexiassist.spelling;
+    exports com.farshad.lexiassist.editor;
+
     opens com.farshad.lexiassist.ui to javafx.fxml;
 }

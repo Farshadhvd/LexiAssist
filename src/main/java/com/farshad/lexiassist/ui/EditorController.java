@@ -5,6 +5,7 @@ import com.farshad.lexiassist.dictionary.DictionaryBundle;
 import com.farshad.lexiassist.dictionary.DictionaryDataLoader;
 import com.farshad.lexiassist.io.TextFileLoader;
 import com.farshad.lexiassist.spelling.SpellingSuggestionService;
+import com.farshad.lexiassist.editor.CurrentWord;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
@@ -18,7 +19,6 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import javafx.stage.Window;
-
 import java.io.File;
 import java.util.List;
 
@@ -207,20 +207,7 @@ public class EditorController {
     }
 
     private String getTextFromLineStartToCaret() {
-        String text = editorTextArea.getText();
-        int caretPosition = editorTextArea.getCaretPosition();
-
-        if (text == null || text.isEmpty() || caretPosition == 0) {
-            return "";
-        }
-
-        int lineStart = caretPosition - 1;
-
-        while (lineStart >= 0 && text.charAt(lineStart) != '\n') {
-            lineStart--;
-        }
-
-        return text.substring(lineStart + 1, caretPosition);
+        return currentWord().textFromLineStartToCaret();
     }
 
     private void hideSuggestionPopup() {
@@ -280,8 +267,10 @@ public class EditorController {
             return;
         }
 
-        int wordStart = findCurrentWordStart(text, caretPosition);
-        int wordEnd = findCurrentWordEnd(text, caretPosition);
+        CurrentWord currentWord = currentWord();
+
+        int wordStart = currentWord.startIndex();
+        int wordEnd = currentWord.endIndex();
 
         editorTextArea.replaceText(wordStart, wordEnd, suggestion);
         editorTextArea.positionCaret(wordStart + suggestion.length());
@@ -293,36 +282,14 @@ public class EditorController {
     }
 
     private String getCurrentWord() {
-        String text = editorTextArea.getText();
-        int caretPosition = editorTextArea.getCaretPosition();
-
-        if (text == null || text.isEmpty() || caretPosition == 0) {
-            return "";
-        }
-
-        int start = findCurrentWordStart(text, caretPosition);
-
-        return text.substring(start, caretPosition);
+        return currentWord().value();
     }
 
-    private int findCurrentWordStart(String text, int caretPosition) {
-        int start = caretPosition - 1;
-
-        while (start >= 0 && Character.isLetter(text.charAt(start))) {
-            start--;
-        }
-
-        return start + 1;
-    }
-
-    private int findCurrentWordEnd(String text, int caretPosition) {
-        int end = caretPosition;
-
-        while (end < text.length() && Character.isLetter(text.charAt(end))) {
-            end++;
-        }
-
-        return end;
+    private CurrentWord currentWord() {
+        return new CurrentWord(
+                editorTextArea.getText(),
+                editorTextArea.getCaretPosition()
+        );
     }
 
     private void loadTextFile() {
