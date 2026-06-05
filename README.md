@@ -1,6 +1,6 @@
 ````markdown
 # LexiAssist
-
+![Maven CI](https://github.com/Farshadhvd/LexiAssist/actions/workflows/maven.yml/badge.svg)
 LexiAssist is a Java 17 desktop writing assistant built with JavaFX. It provides autocomplete and spelling suggestions while typing, using dictionary-based lookup structures.
 
 ## Features
