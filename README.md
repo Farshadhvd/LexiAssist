@@ -1,6 +1,7 @@
-````markdown
 # LexiAssist
+
 ![Maven CI](https://github.com/Farshadhvd/LexiAssist/actions/workflows/maven.yml/badge.svg)
+
 LexiAssist is a Java 17 desktop writing assistant built with JavaFX. It provides autocomplete and spelling suggestions while typing, using dictionary-based lookup structures.
 
 ## Features
@@ -58,22 +59,26 @@ src/main/java/com/farshad/lexiassist/
 │   └── SpellingSuggestionService.java
 └── ui/
     └── EditorController.java
-````
+```
 
 ## How to Run
 
 Make sure Java 17 and Maven are installed.
+
 Check Java:
+
 ```bash
 java -version
 ```
 
 Check Maven:
+
 ```bash
 mvn -version
 ```
 
 Run the application:
+
 ```bash
 mvn clean javafx:run
 ```
@@ -87,6 +92,7 @@ mvn clean test
 ## Example Words to Try
 
 Autocomplete examples:
+
 ```text
 pro
 hel
@@ -95,6 +101,7 @@ dev
 ```
 
 Spelling suggestion examples:
+
 ```text
 helo
 wurld
@@ -105,25 +112,31 @@ recieve
 
 LexiAssist uses two dictionary lookup structures:
 
-| Component            | Data structure                                               | Purpose                |
-| -------------------- | ------------------------------------------------------------ | ---------------------- |
-| `HashWordRepository` | `HashSet<String>`                                            | Fast exact-word lookup |
-| `PrefixDictionary`   | Trie-like prefix tree using `HashMap<Character, PrefixNode>` | Autocomplete lookup    |
+| Component | Data structure | Purpose |
+|---|---|---|
+| `HashWordRepository` | `HashSet<String>` | Fast exact-word lookup |
+| `PrefixDictionary` | Trie-like prefix tree using `HashMap<Character, PrefixNode>` | Autocomplete lookup |
 
 The exact-word dictionary is useful for checking whether a word exists. The prefix dictionary is useful for finding words that start with the current typed prefix.
 
 The spelling suggestion service generates correction candidates using:
 
-* deletion
-* insertion
-* substitution
-* adjacent character swap
+- deletion
+- insertion
+- substitution
+- adjacent character swap
 
 The adjacent-swap operation helps with common typing mistakes such as:
 
 ```text
 recieve -> receive
 ```
+
+## Dictionary Data
+
+The bundled `words-small.txt` file is a small sample dictionary used for demonstration and testing. It is not intended to be a complete English dictionary.
+
+A future improvement could allow users to load their own dictionary file.
 
 ## Project Note
 
@@ -133,17 +146,10 @@ LexiAssist is an independent portfolio project built to practice Java, JavaFX, d
 
 Current version:
 
-* Core JavaFX UI is working
-* Text loading and clearing are working
-* Autocomplete suggestions are working
-* Spelling suggestions are working
-* Keyboard suggestion popup is working
-* Unit tests are included
-* GitHub Actions CI added for testing and building the app automatically.
-
-## Dictionary Data
-
-The bundled `words-small.txt` file is a small sample dictionary used for demonstration and testing. It is not intended to be a complete English dictionary.
-
-A future improvement could allow users to load their own dictionary file.
-````
+- Core JavaFX UI is working
+- Text loading and clearing are working
+- Autocomplete suggestions are working
+- Spelling suggestions are working
+- Keyboard suggestion popup is working
+- Unit tests are included
+- GitHub Actions CI is added for automatically building and testing the project
