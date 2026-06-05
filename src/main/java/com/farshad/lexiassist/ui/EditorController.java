@@ -14,6 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import javafx.stage.Window;
@@ -119,7 +120,6 @@ public class EditorController {
 
         if (currentWord.length() < MIN_WORD_LENGTH_FOR_SUGGESTIONS) {
             resetSuggestions();
-            hideSuggestionPopup();
             return;
         }
 
@@ -168,8 +168,8 @@ public class EditorController {
             return;
         }
 
-        double popupX = editorBounds.getMinX() + 24;
-        double popupY = editorBounds.getMinY() + 48;
+        double popupX = editorBounds.getMinX() + estimateCaretXOffset();
+        double popupY = editorBounds.getMinY() + estimateCaretYOffset();
 
         if (!suggestionPopup.isShowing()) {
             suggestionPopup.show(window, popupX, popupY);
@@ -179,7 +179,55 @@ public class EditorController {
         }
     }
 
+    private double estimateCaretXOffset() {
+        String currentLineText = getTextFromLineStartToCaret();
+
+        Font font = editorTextArea.getFont();
+        double averageCharacterWidth = font.getSize() * 0.55;
+        double estimatedX = 24 + currentLineText.length() * averageCharacterWidth;
+
+        double maxX = Math.max(24, editorTextArea.getWidth() - POPUP_WIDTH - 30);
+
+        return Math.min(estimatedX, maxX);
+    }
+
+    private double estimateCaretYOffset() {
+        String textBeforeCaret = editorTextArea.getText(0, editorTextArea.getCaretPosition());
+        long lineCountBeforeCaret = textBeforeCaret.chars()
+                .filter(character -> character == '\n')
+                .count();
+
+        Font font = editorTextArea.getFont();
+        double estimatedLineHeight = font.getSize() * 1.6;
+        double estimatedY = 48 + lineCountBeforeCaret * estimatedLineHeight;
+
+        double maxY = Math.max(48, editorTextArea.getHeight() - POPUP_MAX_HEIGHT - 30);
+
+        return Math.min(estimatedY, maxY);
+    }
+
+    private String getTextFromLineStartToCaret() {
+        String text = editorTextArea.getText();
+        int caretPosition = editorTextArea.getCaretPosition();
+
+        if (text == null || text.isEmpty() || caretPosition == 0) {
+            return "";
+        }
+
+        int lineStart = caretPosition - 1;
+
+        while (lineStart >= 0 && text.charAt(lineStart) != '\n') {
+            lineStart--;
+        }
+
+        return text.substring(lineStart + 1, caretPosition);
+    }
+
     private void hideSuggestionPopup() {
+        if (popupSuggestionListView != null) {
+            popupSuggestionListView.getItems().clear();
+        }
+
         if (suggestionPopup != null && suggestionPopup.isShowing()) {
             suggestionPopup.hide();
         }
@@ -297,18 +345,17 @@ public class EditorController {
         editorTextArea.setText(fileContent);
 
         resetSuggestions();
-        hideSuggestionPopup();
         statusLabel.setText("Loaded: " + selectedFile.getName());
     }
 
     private void clearEditor() {
         editorTextArea.clear();
         resetSuggestions();
-        hideSuggestionPopup();
         statusLabel.setText("Editor cleared");
     }
 
     private void resetSuggestions() {
         suggestionsListView.getItems().setAll(SUGGESTION_PLACEHOLDER);
+        hideSuggestionPopup();
     }
 }
