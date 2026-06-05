@@ -98,6 +98,7 @@ public class EditorController {
         popupSuggestionListView = new ListView<>();
         popupSuggestionListView.setPrefWidth(POPUP_WIDTH);
         popupSuggestionListView.setMaxHeight(POPUP_MAX_HEIGHT);
+        popupSuggestionListView.setFocusTraversable(false);
         popupSuggestionListView.getStyleClass().add("popup-suggestions-list");
 
         popupSuggestionListView.setOnMouseClicked(event -> {
@@ -190,15 +191,19 @@ public class EditorController {
         }
 
         if (event.getCode() == KeyCode.DOWN) {
-            popupSuggestionListView.requestFocus();
             popupSuggestionListView.getSelectionModel().selectNext();
+            popupSuggestionListView.scrollTo(
+                    popupSuggestionListView.getSelectionModel().getSelectedIndex()
+            );
             event.consume();
             return;
         }
 
         if (event.getCode() == KeyCode.UP) {
-            popupSuggestionListView.requestFocus();
             popupSuggestionListView.getSelectionModel().selectPrevious();
+            popupSuggestionListView.scrollTo(
+                    popupSuggestionListView.getSelectionModel().getSelectedIndex()
+            );
             event.consume();
             return;
         }
