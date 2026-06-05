@@ -139,10 +139,11 @@ Current version:
 * Spelling suggestions are working
 * Keyboard suggestion popup is working
 * Unit tests are included
+* GitHub Actions CI added for testing and building the app automatically.
 
-Planned improvements:
+## Dictionary Data
 
-* Add GitHub Actions CI
-* Add Docker support for reproducible Maven builds
+The bundled `words-small.txt` file is a small sample dictionary used for demonstration and testing. It is not intended to be a complete English dictionary.
 
+A future improvement could allow users to load their own dictionary file.
 ````
