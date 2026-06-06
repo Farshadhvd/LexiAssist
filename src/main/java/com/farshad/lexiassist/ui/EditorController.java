@@ -25,7 +25,7 @@ import java.util.List;
 public class EditorController {
 
     private static final String SUGGESTION_PLACEHOLDER = "Start typing to see suggestions";
-    private static final String DICTIONARY_RESOURCE = "/words-small.txt";
+    private static final String DICTIONARY_RESOURCE = "/words-common.txt";
     private static final int SUGGESTION_LIMIT = 8;
     private static final int MIN_WORD_LENGTH_FOR_SUGGESTIONS = 2;
     private static final double POPUP_WIDTH = 240;

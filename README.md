@@ -136,6 +136,11 @@ recieve -> receive
 
 The bundled `words-small.txt` file is a small sample dictionary used for demonstration and testing. It is not intended to be a complete English dictionary.
 
+LexiAssist includes a larger English word list for demo usability.
+The bundled `words-common.txt` file is based on the `google-10000-english.txt` file from the `first20hours/google-10000-english` project, which is published under the Unlicense.
+Source: first20hours/google-10000-english
+License: Unlicense
+
 A future improvement could allow users to load their own dictionary file.
 
 ## Project Note
