@@ -15,6 +15,16 @@ LexiAssist is a Java 17 desktop writing assistant built with JavaFX. It provides
 - Right-side suggestions panel
 - Unit-tested dictionary and suggestion logic
 
+## Screenshots
+
+### Autocomplete Suggestions
+
+![Autocomplete demo](docs/images/autocomplete-demo.png)
+
+### Spelling Suggestions
+
+![Spelling suggestions demo](docs/images/spelling-demo.png)
+
 ## Keyboard Controls
 
 When the suggestion popup is visible:
